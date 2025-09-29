@@ -6,7 +6,7 @@ export const config = {
 export default async function handler(request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title");
-  const apiKey = Deno.env.get("API_KEY");
+  const apiKey = process.env.API_KEY;
 
   if (!title) {
     return new Response(JSON.stringify({ error: "Missing title parameter" }), {

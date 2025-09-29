@@ -1,12 +1,12 @@
 export const config = {
   runtime: "edge",
-  regions: ["fra1"], // Frankfurt, close to Norway
+  regions: ["fra1"],
 };
 
 export default async function handler(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const id = searchParams.get("id"); // get ?id=... from URL
+    const id = searchParams.get("id");
 
     if (!id) {
       return new Response(JSON.stringify({ error: "Missing id parameter" }), {
@@ -15,7 +15,7 @@ export default async function handler(request) {
       });
     }
 
-    const apiKey = Deno.env.get("API_KEY");
+    const apiKey = process.env.API_KEY;
 
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`

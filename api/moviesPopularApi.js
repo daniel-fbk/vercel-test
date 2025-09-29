@@ -5,7 +5,7 @@ export const config = {
 
 export default async function handler() {
   try {
-    const apiKey = Deno.env.get("API_KEY");
+    const apiKey = process.env.API_KEY;
     if (!apiKey) throw new Error("API_KEY is missing");
 
     const response = await fetch(

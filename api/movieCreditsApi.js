@@ -15,7 +15,7 @@ export default async function handler(request) {
       });
     }
 
-    const apiKey = Deno.env.get("API_KEY");
+    const apiKey = process.env.API_KEY;
 
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`
