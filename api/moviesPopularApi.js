@@ -1,6 +1,6 @@
 export const config = {
   runtime: "edge",
-  regions: ["fra1"], // Frankfurt, close to Norway
+  regions: ["fra1"],
 };
 
 export default async function handler() {
@@ -17,7 +17,7 @@ export default async function handler() {
 
     const data = await response.json();
 
-    return new Response(JSON.stringify(data.results || []), {
+    return new Response(JSON.stringify(data.results), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
