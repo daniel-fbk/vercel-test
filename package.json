@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "dev": "parcel index.html"
+    "build": "parcel build index.html"
   },
   "author": "Daniel Borsheim",
   "license": "ISC",
