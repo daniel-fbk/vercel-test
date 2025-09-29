@@ -1,12 +1,12 @@
 export const config = {
-  runtime: "edge", // Run as an Edge Function
-  regions: ["fra1"], // Optional: pick Frankfurt (closest to Norway)
+  runtime: "edge",
+  regions: ["fra1"],
 };
 
 export default async function handler(request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title");
-  const apiKey = process.env.API_KEY; // hidden in Vercel env settings
+  const apiKey = Deno.env.get("API_KEY");
 
   if (!title) {
     return new Response(JSON.stringify({ error: "Missing title parameter" }), {
