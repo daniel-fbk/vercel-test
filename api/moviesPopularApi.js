@@ -1,4 +1,9 @@
-export async function handler() {
+export const config = {
+  runtime: "edge",
+  regions: ["fra1"],
+};
+
+export default async function handler() {
   const apiKey = process.env.API_KEY;
 
   const response = await fetch(
@@ -6,8 +11,8 @@ export async function handler() {
   );
   const data = await response.json();
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify(data.results),
-  };
+  return new Response(JSON.stringify(data), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }
